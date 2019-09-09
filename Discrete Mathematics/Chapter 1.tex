@@ -1,0 +1,273 @@
+\documentclass[10pt]{ctexart}
+\usepackage{listings}
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+\usepackage{lmodern}
+%\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[justification=centering]{caption}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=black]{hyperref}
+\geometry{a4paper,scale=0.8}
+\renewcommand\contentsname{Contents}
+%\setmonofont[Mapping={}]{Monaco}    %英文引号之类的正常显示，相当于设置英文字体
+%\setsansfont{Consolas} %设置英文字体 Monaco, Consolas,  Fantasque Sans Mono
+%\setmainfont{Monaco} %设置英文字体
+\setmonofont{Consolas}
+% 定义可能使用到的颜色
+%\setmainfont[BoldFont=SimHei]{SimSun}
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\lstset{
+    columns=fixed,       
+    % numbers=left,                                        % 在左侧显示行号
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\small\color{darkgray},                  % 设定行号格式
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,},
+    emphstyle=\color{CPPViolet},
+    basicstyle=\linespread{1}\small\fontspec{Consolas}\ttfamily,
+    breaklines=true,
+    %xleftmargin=1em,xrightmargin=1em, aboveskip=1em,
+    % in the listings package configuration, try:  
+    literate={"}{\textquotedbl}1,  
+    tabsize=4, keepspaces=true
+}
+\CTEXoptions[today=old]
+\title{Exercises 1}
+\author{张逸松}
+\date{\today}
+
+
+\begin{document}
+    \maketitle
+    \subsection*{1.1}
+        It is a true proposition.\par
+        It is a false proposition.\par
+        It is a true proposition.\par
+        It is a false proposition.\par
+        It is not a proposition.\par
+        It is not a proposition. 
+
+    \subsection*{1.15}
+        \subsubsection*{a) $p \rightarrow \neg q$ 4 rows.}
+        \subsubsection*{b) $(p \vee \neg r) \wedge (q \vee \neg s)$ 16 rows.}
+        \subsubsection*{c) $q \vee p \vee \neg s \vee r \vee \neg t \vee u$ 64 rows.}
+        \subsubsection*{d) $(p \wedge r \wedge t) \leftrightarrow (q \wedge t)$ 16 rows.}
+    \subsection*{1.17}
+        \begin{table}[h]
+            \centering
+            \renewcommand{\thesubtable}{\alph{subtable}}
+            \begin{subtable}[h]{2in}
+                \centering
+                \caption{$(p \vee q) \rightarrow (p \oplus q)$}
+                \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \vee q$ & $p \oplus q$ & $(p \vee q) \rightarrow (p \oplus q)$ \\
+                    \hline
+                    $F$ & $F$ & $F$ & 
+                    \hline
+                \end{tabular}
+            \end{subtable}
+        \end{table}
+    \newpage
+    \subsection*{2.5}
+        \begin{table}[h]
+            \centering
+            \renewcommand{\thesubtable}{\alph{subtable}}
+            \begin{subtable}[h]{2in}
+                \setlength{\abovecaptionskip}{0pt}
+                \setlength{\belowcaptionskip}{0pt}
+                \centering
+                \caption{$(p \wedge q) \rightarrow p$}
+                \begin{tabular}{|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \wedge q$ & $(p \wedge q) \rightarrow p$ \\ 
+                    \hline
+                    $F$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $F$ & $T$ & $F$ & $T$ \\ 
+                    \hline
+                    $T$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $T$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                \end{tabular}
+            \end{subtable}
+            \begin{subtable}[h]{3in}
+                \setlength{\abovecaptionskip}{0pt}
+                \setlength{\belowcaptionskip}{0pt}
+                \centering
+                \caption{$p \rightarrow (p \vee q)$}
+                \begin{tabular}{|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \vee q$ & $p \rightarrow (p \vee q)$ \\
+                    \hline
+                    $F$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $F$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                    $T$ & $F$ & $T$ & $T$ \\ 
+                    \hline
+                    $T$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                \end{tabular}
+            \end{subtable}
+            \begin{subtable}[h]{2in}
+                \setlength{\abovecaptionskip}{0pt}
+                \setlength{\belowcaptionskip}{0pt}
+                \centering
+                \caption{$\neg p \rightarrow (p \rightarrow q)$}
+                \begin{tabular}{|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \rightarrow q$ & $\neg p \rightarrow (p \rightarrow q)$ \\
+                    \hline
+                    $F$ & $F$ & $T$ & $T$ \\ 
+                    \hline
+                    $F$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                    $T$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $T$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                \end{tabular}
+            \end{subtable}            
+            \begin{subtable}[h]{4in}
+                \setlength{\abovecaptionskip}{0pt}
+                \setlength{\belowcaptionskip}{0pt}
+                \centering
+                \caption{$(p \wedge q) \rightarrow (p \rightarrow q)$}
+                \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \wedge q$ & $p \rightarrow q$ & $(p \wedge q) \rightarrow (p \rightarrow q)$ \\
+                    \hline
+                    $F$ & $F$ & $F$ & $T$ & $T$ \\ 
+                    \hline
+                    $F$ & $T$ & $F$ & $T$ & $T$ \\ 
+                    \hline
+                    $T$ & $F$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $T$ & $T$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                \end{tabular}
+            \end{subtable}
+            \begin{subtable}[h]{2in}
+                \setlength{\abovecaptionskip}{0pt}
+                \setlength{\belowcaptionskip}{0pt}
+                \centering
+                \caption{$\neg (p \rightarrow q) \rightarrow p$}
+                \begin{tabular}{|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \rightarrow q$ & $\neg (p \rightarrow q) \rightarrow p$ \\
+                    \hline
+                    $F$ & $F$ & $T$ & $T$ \\ 
+                    \hline
+                    $F$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                    $T$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $T$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                \end{tabular}
+            \end{subtable}
+            \begin{subtable}[h]{3.2in}
+                \setlength{\abovecaptionskip}{0pt}
+                \setlength{\belowcaptionskip}{0pt}
+                \centering
+                \caption{$\neg (p \rightarrow q) \rightarrow \neg q$}
+                \begin{tabular}{|c|c|c|c|}
+                    \hline
+                    $p$ & $q$ & $p \rightarrow q$ & $\neg (p \rightarrow q) \rightarrow \neg q$ \\
+                    \hline
+                    $F$ & $F$ & $T$ & $T$ \\ 
+                    \hline
+                    $F$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                    $T$ & $F$ & $F$ & $T$ \\ 
+                    \hline
+                    $T$ & $T$ & $T$ & $T$ \\ 
+                    \hline
+                \end{tabular}
+            \end{subtable}
+        \end{table}
+
+    \subsection*{2.11}
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $\neg (p \leftrightarrow q)$ & $p \leftrightarrow q$ & $p$ & $q$ & $\neg p$ & $\neg p \leftrightarrow q$ \\
+                \hline
+                $F$ & $T$ & $F$ & $F$ & $T$ & $F$ \\
+                \hline
+                $T$ & $F$ & $F$ & $T$ & $T$ & $T$ \\
+                \hline
+                $T$ & $F$ & $T$ & $F$ & $F$ & $T$ \\
+                \hline
+                $F$ & $T$ & $T$ & $T$ & $F$ & $F$ \\
+                \hline
+            \end{tabular}
+        \end{table}
+
+    \subsection*{2.15}    
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $r$ & $(p \rightarrow q)$ & $(q \rightarrow r)$ & $(p \rightarrow r)$ & $(p \rightarrow q) \wedge (q \rightarrow r) \rightarrow (p \rightarrow r)$ \\
+            \hline
+            $F$ & $F$ & $F$ & $T$ & $T$ & $T$ & $T$ \\
+            \hline
+            $F$ & $F$ & $T$ & $T$ & $T$ & $T$ & $T$ \\
+            \hline
+            $F$ & $T$ & $F$ & $T$ & $F$ & $T$ & $T$ \\
+            \hline
+            $F$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$ \\
+            \hline
+            $T$ & $F$ & $F$ & $F$ & $T$ & $F$ & $T$ \\
+            \hline
+            $T$ & $F$ & $T$ & $F$ & $T$ & $T$ & $T$ \\
+            \hline
+            $T$ & $T$ & $F$ & $T$ & $F$ & $F$ & $T$ \\
+            \hline
+            $T$ & $T$ & $T$ & $T$ & $T$ & $T$ & $T$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+\end{document}
