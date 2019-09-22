@@ -1,0 +1,232 @@
+\documentclass[12pt]{ctexart}
+\usepackage{listings}
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}  
+\usepackage{lmodern}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=black]{hyperref}
+\geometry{a4paper,scale=0.8}
+\renewcommand\contentsname{Contents}
+%\setmonofont[Mapping={}]{Monaco}    %英文引号之类的正常显示，相当于设置英文字体
+%\setsansfont{Consolas} %设置英文字体 Monaco, Consolas,  Fantasque Sans Mono
+%\setmainfont{Monaco} %设置英文字体
+\setmonofont{Consolas}
+% 定义可能使用到的颜色
+%\setmainfont[BoldFont=SimHei]{SimSun}
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\lstset{
+    columns=fixed,       
+    % numbers=left,                                        % 在左侧显示行号
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\small\color{darkgray},                  % 设定行号格式
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,},
+    emphstyle=\color{CPPViolet},
+    basicstyle=\linespread{1}\small\fontspec{Consolas}\ttfamily,
+    breaklines=true,
+    %xleftmargin=1em,xrightmargin=1em, aboveskip=1em,
+    % in the listings package configuration, try:  
+    literate={"}{\textquotedbl}1,  
+    tabsize=4, keepspaces=true
+}
+\CTEXoptions[today=old]
+\title{Exercises 4}
+\author{张逸松}
+\date{\today}
+\begin{document}
+    \maketitle
+    \subsection*{4.4}
+    \begin{lstlisting}
+virtual bool interChange() {
+    int curPos = currPos();
+    E& temp = getValue();
+    remove();
+    next();
+    if (curPos == currPos()) return false;
+    prev();
+    insert(temp);
+}
+    \end{lstlisting}
+
+    \subsection*{4.6}
+    \begin{lstlisting}
+void reverse() {
+    if (head == tail) return;
+    head = head->next; append(0);
+    moveToStart();
+    for (Link<E>* temp = curr->next; curr != NULL; curr = temp, temp = temp->next)
+        curr->next = curr;
+    Link<E> temp = head;
+    head = tail;
+    tail = temp;
+}
+    \end{lstlisting}
+
+    \subsection*{4.13}
+    \begin{lstlisting}
+template <typename E> class TwoStack: public Stack<E> {
+private:
+    int maxSize;
+    int top1, top2;
+    E* listArray;
+public:
+    TwoStack(int size = defaultSize) {
+        maxSize = size; top1 = 0; top2 = size - 1; listArray = new E[size];
+    }
+    ~TwoStack() { delete [] listArray; }
+    void clear(){ top1 = 0; top2 = maxSize - 1; }
+    void push1(const E& it){
+        Assert(top1 != top2, "Stack is full");
+        listArray[top1++] = it;
+    }
+    void push2(const E& it){
+        Assert(top1 != top2, "Stack is full");
+        listArray[top2--] = it;
+    }
+    E pop1() {
+        Assert(top1 != 0, "Stack1 is empty");
+        return listArray[--top1];
+    }
+    E pop2() {
+        Assert(top2 != maxSize - 1, "Stack2 is empty");
+        return listArray[++top2];
+    }
+    const E& top1Value() {
+        Assert(top1 != 0, "Stack1 is empty");
+        return listArray[top1 - 1];
+    }
+    const E& top2Value() {
+        Assert(top2 != maxSize - 1, "Stack2 is empty");
+        return listArray[top2 + 1];
+    }
+    int length() const { return top1 + maxSize - 1 - top2; }
+};
+    \end{lstlisting}
+
+    \subsection*{4.14}
+    \begin{lstlisting}
+template <typename E> class AQueue: public Queue<E> {
+private:
+    int maxSize;
+    int front;
+    int rear;
+    bool empty;
+    E* listArray;
+public:
+    AQueue(int size = defaultSize) {
+        maxSize = size + 1;
+        rear = 0; front = 1;
+        empty = 1;
+        listArray = new E[maxSize];
+    }
+    ~AQueue() { delete [] listArray; }
+    void clear() { rear = 0; front = 1; empty = 1; }
+    void enqueue(const E& it) {
+        Assert(((rear + 2) % maxSize) != front, "Queue is full");
+        rear = (rear + 1) % maxSize;
+        listArray[rear] = it;
+        empty = 0;
+    }
+    E dequeue() {
+        Assert(empty != 1, "Queue is empty");
+        E it = listArray[front];
+        front = (front + 1) % maxSize;
+        if ((rear + 1) % maxSize == front) empty = 1;
+        return it;
+    }
+    const E& frontValue() const {
+        Assert(empty != 1, "Queue is empty");
+        return listArray[front];
+    }
+};
+    \end{lstlisting}
+
+    \subsection*{4.15}
+    \begin{lstlisting}
+bool isPalindrome() {
+    Stack <char> S;
+    Queue <char> Q;
+    char c;
+    for (; cin >> c; ) {
+        S.push(c);
+        Q.enqueue(c);
+    }
+    for (; Q.length(); ) {
+        if (S.top() != Q.front()) return false;
+        char temp = S.pop();
+        temp = Q.dequeue();
+    }
+    return true;
+}
+    \end{lstlisting}
+
+    \subsection*{4.19}
+    \subsubsection*{a)}
+    \begin{lstlisting}
+bool isBalanced(string str) {
+    stack <int> s;
+    for (int i = 0; i < str.size(); ++i) {
+        if (str[i] == '(') s.push(i);
+        else if (str[i] == ')') {
+            if (s.empty()) return false;
+            else s.pop();
+        }
+    }
+    return s.empty();
+}
+    \end{lstlisting}
+
+    \subsubsection*{b)}
+    \begin{lstlisting}
+int FOP(string str) {
+    stack <int> s;
+    for (int i = 0; i < str.size(); ++i) {
+        if (str[i] == '(') s.push(i);
+        else if (str[i] == ')') {
+            if (s.empty()) return i;
+            else s.pop();
+        }
+    }
+    if (s.empty()) return -1;
+    for (int i = s.top(); ; i = s.top(), s.pop())
+        if (s.empty()) return i;
+}
+    \end{lstlisting}
+\end{document}
