@@ -124,6 +124,24 @@
         0 & 2 & 1 & 0
     \end{matrix}
     \right]$$
+    \subsection*{3.12}
+    \begin{tikzpicture}
+        \node (a) at (0, 0) [circle , draw, fill = black, label=below:$a$, scale = 0.4pt] {};
+        \node (b) at (0, 2) [circle , draw, fill = black, label=above:$b$, scale = 0.4pt] {};
+        \node (c) at (2, 0) [circle , draw, fill = black, label=below:$c$, scale = 0.4pt] {};
+        \draw [-latex] (a) arc (0: 350: 0.3);
+        \draw [-latex, bend left = 10] (a) edge (b);
+        \draw [-latex, bend left = 25] (a) edge (b);
+        \draw [-latex] (a) edge (c);
+        \draw [-latex, bend left = 10] (b) edge (a);
+        \draw [-latex, bend left = 25] (b) edge (a);
+        \draw [-latex, bend left = 10] (c) edge (b);
+        \draw [-latex, bend right = 10] (c) edge (b);
+        \draw [] (c) arc (180: 360: 0.3);
+        \draw [-latex] (2.6, 0) arc (0: 170: 0.3);
+        \draw [] (c) arc(90: 360: 0.3);
+        \draw [-latex] (2.3, -0.3) arc (0: 90: 0.3);
+    \end{tikzpicture}
     \subsection*{3.28 \textbf{c)}}
     No isomorphic.
     \subsection*{3.30}
