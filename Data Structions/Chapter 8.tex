@@ -1,0 +1,95 @@
+\documentclass[12pt]{ctexart}
+\usepackage{listings}
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}  
+\usepackage{lmodern}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=black]{hyperref}
+\geometry{a4paper,scale=0.8}
+\renewcommand\contentsname{Contents}
+%\setmonofont[Mapping={}]{Monaco}    %英文引号之类的正常显示，相当于设置英文字体
+%\setsansfont{Consolas} %设置英文字体 Monaco, Consolas,  Fantasque Sans Mono
+%\setmainfont{Monaco} %设置英文字体
+\setmonofont{Consolas}
+% 定义可能使用到的颜色
+%\setmainfont[BoldFont=SimHei]{SimSun}
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\lstset{
+    columns=fixed,       
+    % numbers=left,                                        % 在左侧显示行号
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\small\color{darkgray},                  % 设定行号格式
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,},
+    emphstyle=\color{CPPViolet},
+    basicstyle=\linespread{1}\small\fontspec{Consolas}\ttfamily,
+    breaklines=true,
+    %xleftmargin=1em,xrightmargin=1em, aboveskip=1em,
+    % in the listings package configuration, try:  
+    literate={"}{\textquotedbl}1,  
+    tabsize=4, keepspaces=true
+}
+\CTEXoptions[today=old]
+\title{Exercises 8}
+\author{张逸松}
+\date{\today}
+\begin{document}
+    \maketitle
+    \subsection*{8.2}
+    A track holds $144 * 0.5 = 72$ Kb. So the file requires $360 / 72 = 5$ tracks.
+    The disk turns at $3600$ rpm. Track rotation time is $1 / 3600 * 60 * 1000 = \frac{50}{3}$ ms. Latency time is $\frac{50}{3} / 2 = \frac{25}{3}$ ms.
+    Seek time is $$80 + \frac{25}{3} + 4 * \frac{50}{3} + 4 * (20 + \frac{25}{3} + 4 * \frac{50}{3}) = 535ms$$
+    \subsection*{8.3}
+    read one entire track : $80 + \frac{25}{3} + 4 * \frac{50}{3} = 155$ms. \par
+    read one sector : $80 + 0.5 * \frac{50}{3} + 1 / 144 * \frac{50}{3}= 88.45$ms.
+    read one byte : $1 / 144 * \frac{50}{3} = 0.12$ms.
+    \subsection*{8.11}
+    A track holds $1170 * 0.5 = 585$ Kb. So the file requires $6 * 1024 / 585 = 10.5$ tracks.
+    The disk turns at $3600$ rpm. Track rotation time is $1 / 15000 * 60 * 1000 = 4$ ms. Latency time is $4 / 2 = 2$ ms.
+    Seek time is $$3.6 + 4 * 0.5 + 4 * 1 + 9.5 * (0.4 + 4 * 0.5 + 4 * 1) = 70.4ms$$
+    \subsection*{8.16}
+    \begin{itemize}
+        \item [\textbf{(a)}] 10 4 6 8 5
+        \item [\textbf{(b)}] 5 3 4 6 8
+        \item [\textbf{(c)}] 5 3 9 2 8
+        \item [\textbf{(d)}] 5 8 6 4 10
+        \item [\textbf{(e)}] 12 15 2 4 5
+    \end{itemize}
+\end{document}
