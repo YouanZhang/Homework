@@ -17,7 +17,7 @@ public class TestBanking {
     //account = customer.getAccount();
     System.out.println("Creating an account with a 500.00 balance."); 
 		account = new Account(500.00);
-		System.out.println("Withdraw 150.00");    
+		System.out.println("Withdraw 150.00");
     account.withdraw(150.00);
     System.out.println("Deposit 22.50");
     account.deposit(22.50);
