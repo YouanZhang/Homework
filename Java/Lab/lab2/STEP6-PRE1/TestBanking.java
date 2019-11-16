@@ -50,7 +50,14 @@ public class TestBanking {
       for ( int acct_idx = 0; acct_idx < customer.getNumOfAccounts(); acct_idx++ ) {
 	Account account = customer.getAccount(acct_idx);
 	String  account_type = "";
-
+  if (account instanceof SavingsAccount){
+    account_type = "Savings Account";
+  }
+  else{
+    account_type = "Checking Account";
+  }
+  System.out.println("    " + account_type + ": current balance is "
+			 + currency_format.format(account.getBalance()));
 	// Determine the account type
 	/*** Step 1:
 	**** Use the instanceof operator to test what type of account

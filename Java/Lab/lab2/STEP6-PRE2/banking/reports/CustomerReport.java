@@ -8,7 +8,7 @@ public class CustomerReport {
   public void generateReport() {
     NumberFormat currency_format = NumberFormat.getCurrencyInstance();
 
-    Bank         bank = /*** STEP 1: RETRIEVE BANK SINGLETON OBJECT HERE ***/
+    Bank         bank = Bank.getBank();/*** STEP 1: RETRIEVE BANK SINGLETON OBJECT HERE ***/
 
     Customer     customer;
 
