@@ -5,8 +5,8 @@ public class Customer{
     private String lastName = "";
     Account account = new Account();
 
-    public Customer(String _firstName, String _lastName) {
-        firstName = _firstName; lastName = _lastName;
+    public Customer(String f, String l) {
+        firstName = f; lastName = l;
     }
 
     public String getFirstName() {
