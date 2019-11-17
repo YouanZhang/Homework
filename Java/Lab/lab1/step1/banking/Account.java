@@ -12,13 +12,11 @@ public class Account{
         return balance;
     }
 
-    public double deposit(double amt){
+    public void deposit(double amt){
         balance += amt;
-        return balance;
     }
 
-    public double withdraw(double amt){
+    public void withdraw(double amt){
         balance -= amt;
-        return balance;
     }
 }
