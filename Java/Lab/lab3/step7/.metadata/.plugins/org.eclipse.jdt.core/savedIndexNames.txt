@@ -1,0 +1,18 @@
+INDEX VERSION 1.131+D:\Study\Repo\Homework\Java\Lab\lab3\step7\.metadata\.plugins\org.eclipse.jdt.core
+2445146380.index
+133809817.index
+1212979279.index
+3925363498.index
+3349113228.index
+4267928114.index
+2560946888.index
+405908807.index
+834837627.index
+3310145729.index
+1961058694.index
+1326742356.index
+278294847.index
+3227851435.index
+496002276.index
+409542645.index
+2531774037.index
