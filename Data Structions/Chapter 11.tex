@@ -1,0 +1,137 @@
+\documentclass[12pt]{ctexart}
+\usepackage{listings}
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}  
+\usepackage{lmodern}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=black]{hyperref}
+\geometry{a4paper,scale=0.8}
+\renewcommand\contentsname{Contents}
+%\setmonofont[Mapping={}]{Monaco}    %英文引号之类的正常显示，相当于设置英文字体
+%\setsansfont{Consolas} %设置英文字体 Monaco, Consolas,  Fantasque Sans Mono
+%\setmainfont{Monaco} %设置英文字体
+\setmonofont{Consolas}
+% 定义可能使用到的颜色
+%\setmainfont[BoldFont=SimHei]{SimSun}
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\lstset{
+    columns=fixed,       
+    % numbers=left,                                        % 在左侧显示行号
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\small\color{darkgray},                  % 设定行号格式
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,},
+    emphstyle=\color{CPPViolet},
+    basicstyle=\linespread{1}\small\fontspec{Consolas}\ttfamily,
+    breaklines=true,
+    %xleftmargin=1em,xrightmargin=1em, aboveskip=1em,
+    % in the listings package configuration, try:  
+    literate={"}{\textquotedbl}1,  
+    tabsize=4, keepspaces=true
+}
+\CTEXoptions[today=old]
+\title{Exercises 11}
+\author{张逸松}
+\date{\today}
+\begin{document}
+    \maketitle
+    \subsection*{11.4}
+    1 -> 2 -> 3 -> 5 -> 4 -> 6
+    \subsection*{11.6}
+    1 -> 2 -> 3 \par
+    \quad -> 4 -> 5 \par
+    \quad -> 6
+    \subsection*{11.17}
+    Order: (3, 2), (2, 4), (2, 1), (1, 6), (6, 5) \par
+    MST: (3, 2), (2, 4), (2, 1), (1, 6), (6, 5)
+    \subsection*{11.18}
+    \begin{table}[h]
+        Insert (1, 6)
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            vertex & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+            \hline
+            connected & 1 & 2 & 3 & 4 & 5 & 1 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \begin{table}[h]
+        Insert (2, 3)
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            vertex & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+            \hline
+            connected & 1 & 2 & 2 & 4 & 5 & 1 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \begin{table}[h]
+        Insert (5, 6)
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            vertex & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+            \hline
+            connected & 1 & 2 & 2 & 4 & 1 & 1 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \newpage
+    \begin{table}[h]
+        Insert (2, 4)
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            vertex & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+            \hline
+            connected & 1 & 2 & 2 & 2 & 1 & 1 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \begin{table}[h]
+        Insert (1, 2)
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            vertex & 1 & 2 & 3 & 4 & 5 & 6 \\ 
+            \hline
+            connected & 1 & 1 & 2 & 2 & 1 & 1 \\
+            \hline
+        \end{tabular}
+    \end{table}
+    other edge insert failed.
+\end{document}
