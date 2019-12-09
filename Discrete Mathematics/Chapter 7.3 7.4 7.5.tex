@@ -1,0 +1,148 @@
+\documentclass[10pt]{ctexart}
+\usepackage{listings}
+\usepackage{amsmath} 
+\usepackage{amssymb} 
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}  
+\usepackage{textcomp}
+\usepackage{lmodern}
+%\usepackage{caption}
+\usepackage[justification=centering]{subcaption}
+\usepackage[justification=centering]{caption}
+\usepackage{tikz}
+\usetikzlibrary{graphs}
+\usepackage{amsfonts}
+\usepackage[colorlinks,
+            linkcolor=black,
+            anchorcolor=black,
+            citecolor=black]{hyperref}
+\geometry{a4paper,scale=0.8}
+\renewcommand\contentsname{Contents}
+%\setmonofont[Mapping={}]{Monaco}    %英文引号之类的正常显示，相当于设置英文字体
+%\setsansfont{Consolas} %设置英文字体 Monaco, Consolas,  Fantasque Sans Mono
+%\setmainfont{Monaco} %设置英文字体
+\setmonofont{Consolas}
+% 定义可能使用到的颜色
+%\setmainfont[BoldFont=SimHei]{SimSun}
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\lstset{
+    columns=fixed,       
+    % numbers=left,                                        % 在左侧显示行号
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\small\color{darkgray},                  % 设定行号格式
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,},
+    emphstyle=\color{CPPViolet},
+    basicstyle=\linespread{1}\small\fontspec{Consolas}\ttfamily,
+    breaklines=true,
+    %xleftmargin=1em,xrightmargin=1em, aboveskip=1em,
+    % in the listings package configuration, try:  
+    literate={"}{\textquotedbl}1,  
+    tabsize=4, keepspaces=true
+}
+\CTEXoptions[today=old]
+\title{Exercises 7}
+\author{软件工程一班 \ 张逸松 57号}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \subsection*{3.5}
+    a -> b -> e -> k -> l -> m -> f -> g -> n -> r -> s -> c -> d -> h -> o -> i -> j -> p -> q
+    \subsection*{3.6}
+    d -> f -> g -> e -> b -> c -> a
+    \subsection*{3.8}
+    \begin{tikzpicture}
+        \node (1) at (0, 0) [circle , draw, fill = black, label=below:$+$, scale = 0.4pt] {};
+        \node (2) at (-1, -1) [circle , draw, fill = black,label=below:$+$,  scale = 0.4pt] {};
+        \node (3) at (1, -1) [circle , draw, fill = black,label=below:$/$,  scale = 0.4pt] {};
+        \node (4) at (-1.5, -2) [circle , draw, fill = black,label=below:$x$,  scale = 0.4pt] {};
+        \node (5) at (-0.5, -2) [circle , draw, fill = black,label=below:$*$,  scale = 0.4pt] {};
+        \node (6) at (0.5, -2) [circle , draw, fill = black,label=below:$x$,  scale = 0.4pt] {};
+        \node (7) at (1.5, -2) [circle , draw, fill = black,label=below:$y$,  scale = 0.4pt] {};
+        \node (8) at (-1, -3) [circle , draw, fill = black,label=below:$x$,  scale = 0.4pt] {};
+        \node (9) at (0, -3) [circle , draw, fill = black,label=below:$y$,  scale = 0.4pt] {};
+        \draw [] (1) edge (2);
+        \draw [] (1) edge (3);
+        \draw [] (2) edge (4);
+        \draw [] (2) edge (5);
+        \draw [] (3) edge (6);
+        \draw [] (3) edge (7);
+        \draw [] (5) edge (8);
+        \draw [] (5) edge (9);
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \node (1) at (0, 0) [circle , draw, fill = black, label=below:$+$, scale = 0.4pt] {};
+        \node (2) at (-0.5, -1) [circle , draw, fill = black,label=below:$x$,  scale = 0.4pt] {};
+        \node (3) at (0.5, -1) [circle , draw, fill = black,label=below:$/$,  scale = 0.4pt] {};
+        \node (4) at (0, -2) [circle , draw, fill = black,label=below:$+$,  scale = 0.4pt] {};
+        \node (5) at (1, -2) [circle , draw, fill = black,label=below:$y$,  scale = 0.4pt] {};
+        \node (6) at (-0.5, -3) [circle , draw, fill = black,label=below:$*$,  scale = 0.4pt] {};
+        \node (7) at (0.5, -3) [circle , draw, fill = black,label=below:$x$,  scale = 0.4pt] {};
+        \node (8) at (-1, -4) [circle , draw, fill = black,label=below:$x$,  scale = 0.4pt] {};
+        \node (9) at (0, -4) [circle , draw, fill = black,label=below:$y$,  scale = 0.4pt] {};
+        \draw [] (1) edge (2);
+        \draw [] (1) edge (3);
+        \draw [] (3) edge (4);
+        \draw [] (3) edge (5);
+        \draw [] (4) edge (6);
+        \draw [] (4) edge (7);
+        \draw [] (6) edge (8);
+        \draw [] (6) edge (9);
+    \end{tikzpicture}
+    \begin{itemize}
+        \item [\textbf{a)}] $++x*xy/xy$, $+x/+*xyxy$
+        \item [\textbf{b)}] $xxy*+xy/+$, $xxy*x+y/+$
+        \item [\textbf{c)}] $(x+xy)+(x/y)$, $x+((xy+x)/y)$
+    \end{itemize}
+    \subsection*{4.3}
+    a -> b -> c -> d -> e -> f -> g -> i -> j -> h -> l -> k
+    \subsection*{4.9 c)}
+    $K_{1,6}$ is already a spanning tree.
+    \subsection*{4.16}
+    Take each connected component of a simple graph. The union of spanning trees of those connected components is the spanning forest.
+    \subsection*{5.3}
+    \begin{tikzpicture}
+        \node (1) at (0, 0) [circle , draw, fill = black, label=above:San Francisco, scale = 0.4pt] {};
+        \node (2) at (2, -0.4) [circle , draw, fill = black,label=below:Denver,  scale = 0.4pt] {};
+        \node (3) at (4, 0.8) [circle , draw, fill = black,label=above:Chicago,  scale = 0.4pt] {};
+        \node (4) at (5, -1) [circle , draw, fill = black,label=below:Atlanta,  scale = 0.4pt] {};
+        \node (5) at (6, 0.8) [circle , draw, fill = black,label=above:New York,  scale = 0.4pt] {};
+        \draw [] (1) edge node [below,sloped]{\$900} (2);
+        \draw [] (1) edge node [above,sloped]{\$1200} (3);
+        \draw [] (3) edge node [above,sloped]{\$700} (4);
+        \draw [] (4) edge node [above,sloped]{\$800} (5);
+    \end{tikzpicture}
+\end{document}
